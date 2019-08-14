@@ -1,0 +1,19 @@
+{
+  "name": "cliver-commands-test",
+  "version": "1.0.0",
+  "main": "./module/commands/index.js",
+  "commands": [
+    "test"
+  ],
+  "scripts": {
+    "prepublish": "npm run babel-module",
+    "babel-module": "cross-env BABEL_ENV=module babel src --out-dir module --config-file=../../babel.config.js"
+  },
+  "commandsPath": [
+    "./module/commands"
+  ],
+  "dependencies": {
+    "@babel/runtime": "^7.3.4"
+  },
+  "license": "MIT"
+}

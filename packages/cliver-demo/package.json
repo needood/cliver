@@ -1,0 +1,10 @@
+{
+  "name": "cliver-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "adapter":"cliver-commands-test",
+  "dependencies": {
+    "@babel/runtime": "^7.3.4"
+  },
+  "license": "MIT"
+}
