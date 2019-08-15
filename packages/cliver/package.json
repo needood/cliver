@@ -1,6 +1,6 @@
 {
   "name": "cliver",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "module/index.js",
   "scripts": {
@@ -10,12 +10,23 @@
   "bin": {
     "cliver": "module/index.js"
   },
+  "contributors": [
+    {
+      "name": "cliver Contributors",
+      "url": "https://github.com/needood/cliver/graphs/contributors"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/needood/cliver.git"
+  },
   "dependencies": {
     "@babel/runtime": "^7.3.4",
     "core-js": "3",
     "fs-extra": "^8.1.0",
     "read-pkg-up": "^6.0.0",
     "resolve-from": "^5.0.0",
+    "table": "^5.4.5",
     "update-notifier": "^2.5.0",
     "yargs": "^12.0.1"
   },

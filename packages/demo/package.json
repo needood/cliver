@@ -2,6 +2,9 @@
   "name": "cliver-demo",
   "version": "1.0.0",
   "main": "index.js",
-  "adapter":"cliver-commands-test",
-  "license": "MIT"
+  "adapter": "../cliver-commands-test",
+  "license": "MIT",
+  "dependencies": {
+    "cliver": "^0.1.0"
+  }
 }

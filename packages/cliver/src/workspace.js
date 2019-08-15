@@ -1,28 +1,32 @@
 import { getConfig, setConfig } from './config'
-const desc = `workspace`
+import { table } from 'table'
 function setWorkspace(name){
     const config = getConfig()
     const workspace = _getWorkspace(config)
     workspace.set(name, process.cwd())
-    _setWorkspace(config,workspace)
+    _setWorkspace(config, workspace)
     setConfig(config)
-    console.log(workspace)
+    console.log(_table(workspace));
 }
 function removeWorkspace(name){
-    if(!name){
-        return
-    }
     const config = getConfig()
     const workspace = _getWorkspace(config)
     workspace.delete(name)
     _setWorkspace(config,workspace)
     setConfig(config)
-    console.log(workspace)
+    console.log(_table(workspace));
 }
 function listWorkspace(){
     const config = getConfig()
     const workspace = _getWorkspace(config)
-    console.log(workspace)
+    console.log(_table(workspace));
+}
+function _table(workspace){
+    const arr = Array.from(workspace.entries())
+    if(arr.length){
+        return table(arr);
+    }
+    return 'NONE'
 }
 function _getWorkspace(config){
     let workspace 
@@ -41,51 +45,33 @@ export function getWorkspaceByKey(key){
 function _setWorkspace(config, workspace) {
     config.set('workspace', Object.fromEntries(workspace))
 }
-function handler({ _, $0 }) {
-    const command = _[1]
-    const name = _[2]
-    switch(command){
-        case 'set':
-            setWorkspace(name)
-            break
-        case 'rm':
-            removeWorkspace(name)
-            break
-        case 'ls':
-            listWorkspace()
-        default:
-    }
-}
-export const workspace = ['workspace', desc, () => { }, handler]
-export const workspaceSet = ['workspace set [name]', '设置当前路径为工作区', (yargs) => {
+export const workspaceSet = ['workspace-alias [alias]', '设置当前路径为工作区', (yargs) => {
     yargs
-        .positional('name', {
+        .positional('alias', {
             describe: '工作区别名',
         })
 },(argv)=>{
-    if(argv.name){
-        setWorkspace(argv.name)
+    if(argv.alias){
+        setWorkspace(argv.alias)
     }
 }]
-export const workspaceLs = ['workspace ls', '列出所有工作区', () => {
+export const workspaceLs = ['workspace-ls', '列出所有工作区', () => {
 },()=>{
     listWorkspace()
 }]
-export const workspaceRm = ['workspace rm [name]', '删除指定工作区', (yargs) => {
+export const workspaceRm = ['workspace-rm [alias]', '删除指定工作区', (yargs) => {
     yargs
-        .positional('name', {
+        .positional('alias', {
             describe: '工作区别名',
         })
 }, (argv) => {
-    if(argv.name){
-        removeWorkspace(argv.name)
+    if(argv.alias){
+        removeWorkspace(argv.alias)
     }
 }]
 export function bindWorkspace(cli){
     cli.option('workspace', {
         describe: '指定工作区',
     })
-    cli.command.apply(cli, workspaceRm)
-    cli.command.apply(cli, workspaceSet)
-    cli.command.apply(cli, workspaceLs)
+    cli.command(...workspaceSet).command(...workspaceLs).command(...workspaceRm)
 }

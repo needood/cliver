@@ -11,11 +11,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getWorkspaceByKey = getWorkspaceByKey;
 exports.bindWorkspace = bindWorkspace;
-exports.workspaceRm = exports.workspaceLs = exports.workspaceSet = exports.workspace = void 0;
+exports.workspaceRm = exports.workspaceLs = exports.workspaceSet = void 0;
 
 var _config = require("./config");
 
-var desc = `workspace`;
+var _table2 = require("table");
 
 function setWorkspace(name) {
   var config = (0, _config.getConfig)();
@@ -27,14 +27,10 @@ function setWorkspace(name) {
   _setWorkspace(config, workspace);
 
   (0, _config.setConfig)(config);
-  console.log(workspace);
+  console.log(_table(workspace));
 }
 
 function removeWorkspace(name) {
-  if (!name) {
-    return;
-  }
-
   var config = (0, _config.getConfig)();
 
   var workspace = _getWorkspace(config);
@@ -44,7 +40,7 @@ function removeWorkspace(name) {
   _setWorkspace(config, workspace);
 
   (0, _config.setConfig)(config);
-  console.log(workspace);
+  console.log(_table(workspace));
 }
 
 function listWorkspace() {
@@ -52,7 +48,17 @@ function listWorkspace() {
 
   var workspace = _getWorkspace(config);
 
-  console.log(workspace);
+  console.log(_table(workspace));
+}
+
+function _table(workspace) {
+  var arr = Array.from(workspace.entries());
+
+  if (arr.length) {
+    return (0, _table2.table)(arr);
+  }
+
+  return 'NONE';
 }
 
 function _getWorkspace(config) {
@@ -79,52 +85,27 @@ function _setWorkspace(config, workspace) {
   config.set('workspace', Object.fromEntries(workspace));
 }
 
-function handler({
-  _,
-  $0
-}) {
-  var command = _[1];
-  var name = _[2];
-
-  switch (command) {
-    case 'set':
-      setWorkspace(name);
-      break;
-
-    case 'rm':
-      removeWorkspace(name);
-      break;
-
-    case 'ls':
-      listWorkspace();
-
-    default:
-  }
-}
-
-var workspace = ['workspace', desc, () => {}, handler];
-exports.workspace = workspace;
-var workspaceSet = ['workspace set [name]', '设置当前路径为工作区', yargs => {
-  yargs.positional('name', {
+var workspaceSet = ['workspace-alias [alias]', '设置当前路径为工作区', yargs => {
+  yargs.positional('alias', {
     describe: '工作区别名'
   });
 }, argv => {
-  if (argv.name) {
-    setWorkspace(argv.name);
+  if (argv.alias) {
+    setWorkspace(argv.alias);
   }
 }];
 exports.workspaceSet = workspaceSet;
-var workspaceLs = ['workspace ls', '列出所有工作区', () => {}, () => {
+var workspaceLs = ['workspace-ls', '列出所有工作区', () => {}, () => {
   listWorkspace();
 }];
 exports.workspaceLs = workspaceLs;
-var workspaceRm = ['workspace rm [name]', '删除指定工作区', yargs => {
-  yargs.positional('name', {
+var workspaceRm = ['workspace-rm [alias]', '删除指定工作区', yargs => {
+  yargs.positional('alias', {
     describe: '工作区别名'
   });
 }, argv => {
-  if (argv.name) {
-    removeWorkspace(argv.name);
+  if (argv.alias) {
+    removeWorkspace(argv.alias);
   }
 }];
 exports.workspaceRm = workspaceRm;
@@ -133,7 +114,5 @@ function bindWorkspace(cli) {
   cli.option('workspace', {
     describe: '指定工作区'
   });
-  cli.command.apply(cli, workspaceRm);
-  cli.command.apply(cli, workspaceSet);
-  cli.command.apply(cli, workspaceLs);
+  cli.command(...workspaceSet).command(...workspaceLs).command(...workspaceRm);
 }
