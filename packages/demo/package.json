@@ -4,5 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "readme": "ERROR: No README data found!",
-  "_id": "cliver-demo@1.0.0"
+  "_id": "cliver-demo@1.0.0",
+  "adapter": "../adapter-test"
 }

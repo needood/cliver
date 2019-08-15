@@ -30,13 +30,13 @@ Usage: cliver <command> [options]
   -v, --version  显示版本号                                                     [布尔]
 ```
 
-# 桥接命令
+## 桥接命令
 
 可以依赖包中为cli扩展更多命令,参考 packages/cliver-commands-test
 
 在项目中的package.json 文件中添加adapter到对应的依赖包或者js文件,可以为cli添加更多命令
 
-# 工作区
+## 工作区
 
 提供工作区特性绑定你的当前路径到工作区
 
@@ -44,7 +44,7 @@ Usage: cliver <command> [options]
 
 添加 --workspace='alias'选项,你可以在任意目录下运行工作区目录下的命令
 
-# 适配器
+## 适配器
 
 添加适配器定制cliver的命令
 
@@ -66,3 +66,17 @@ export const commands = [
     }
 ]
 ```
+
+## 例子
+
+适配器例子:
+
+packages/adapter-test
+
+使用项目例子:
+
+packages/demo
+
+## 开发
+
+使用yarn 构建

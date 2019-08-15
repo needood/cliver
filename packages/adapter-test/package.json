@@ -1,5 +1,5 @@
 {
-  "name": "cliver-commands-test",
+  "name": "adapter-test",
   "version": "1.0.0",
   "main": "./module/commands/index.js",
   "commands": [
