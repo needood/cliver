@@ -2,6 +2,8 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
+require("core-js/modules/es.array.iterator");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,14 +11,16 @@ exports.buildLocalCommands = buildLocalCommands;
 
 var _resolveCwd = _interopRequireDefault(require("resolve-cwd"));
 
+var _workspace = require("./workspace");
+
 function buildLocalCommands(cli, adapterName) {
-  let commands = [];
+  var commands = [];
 
   if (adapterName) {
     try {
-      const adapterPackagePath = _resolveCwd.default.silent(`${adapterName}`);
+      var adapterPackagePath = _resolveCwd.default.silent(`${adapterName}`);
 
-      let {
+      var {
         commands: _commands
       } = require(adapterPackagePath);
 
@@ -26,6 +30,7 @@ function buildLocalCommands(cli, adapterName) {
     }
   }
 
+  cli.command.apply(cli, _workspace.workspace);
   commands.forEach(command => {
     genCommand(command);
   });
@@ -35,7 +40,8 @@ function buildLocalCommands(cli, adapterName) {
     desc,
     handler
   }) {
-    desc = desc || `command:${name}`;
+    desc = desc || `(Empty)`;
+    desc = '*' + desc;
     return cli.command(name, desc, () => {}, (...argv) => {
       return handler(...argv);
     });

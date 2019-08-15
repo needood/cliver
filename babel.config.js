@@ -13,8 +13,8 @@ module.exports = {
                             ],
                             "ios": "8.2",
                         },
-                        "exclude": ["es6.promise"],
-                        "include": ["transform-block-scoping"],
+                        "corejs": 3,
+                        "include": ["transform-block-scoping", "es.object.from-entries"],
                         "useBuiltIns": "usage",
                         "debug": true
                     }
@@ -33,7 +33,11 @@ module.exports = {
                 ["@babel/preset-env", {
                     "targets": {
                         "node": "6.10"
-                    }
+                    },
+                    "corejs": 3,
+                    "include": ["transform-block-scoping", "es.object.from-entries"],
+                    "useBuiltIns": "usage",
+                    "debug": true
                 }]
             ],
             "plugins": [
