@@ -45,7 +45,7 @@ export function getWorkspaceByKey(key){
 function _setWorkspace(config, workspace) {
     config.set('workspace', Object.fromEntries(workspace))
 }
-export const workspaceSet = ['workspace-alias [alias]', '设置当前路径为工作区', (yargs) => {
+const workspaceSet = ['workspace-alias [alias]', '设置当前路径为工作区', (yargs) => {
     yargs
         .positional('alias', {
             describe: '工作区别名',
@@ -55,11 +55,11 @@ export const workspaceSet = ['workspace-alias [alias]', '设置当前路径为�
         setWorkspace(argv.alias)
     }
 }]
-export const workspaceLs = ['workspace-ls', '列出所有工作区', () => {
+const workspaceLs = ['workspace-ls', '列出所有工作区', () => {
 },()=>{
     listWorkspace()
 }]
-export const workspaceRm = ['workspace-rm [alias]', '删除指定工作区', (yargs) => {
+const workspaceRm = ['workspace-rm [alias]', '删除指定工作区', (yargs) => {
     yargs
         .positional('alias', {
             describe: '工作区别名',

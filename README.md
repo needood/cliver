@@ -19,6 +19,7 @@ npm install -g cliver
 Usage: cliver <command> [options]
 
 命令：
+  cliver adapter [module]         添加适配器
   cliver workspace-alias [alias]  设置当前路径为工作区
   cliver workspace-ls             列出所有工作区
   cliver workspace-rm [alias]     删除指定工作区
@@ -42,3 +43,26 @@ Usage: cliver <command> [options]
 提供 workspace-ls workspace-alias workspace-rm 三个命令管理工作区
 
 添加 --workspace='alias'选项,你可以在任意目录下运行工作区目录下的命令
+
+# 适配器
+
+添加适配器定制cliver的命令
+
+方法:
+通过 cliver adapter [module] 命令为项目添加适配器
+
+module可以是一个依赖或者相对地址
+
+module例子:
+
+```javascript
+export const commands = [
+    {
+        name:"test",
+        desc:"测试用命令",
+        handler(...args){
+            console.log("test命令:",...args)
+        }
+    }
+]
+```

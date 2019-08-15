@@ -1,4 +1,3 @@
-import {bindWorkspace} from './workspace'
 import resolveFrom from 'resolve-from'
 
 
@@ -13,7 +12,6 @@ export function buildLocalCommands(cli, adapterName) {
             throw (new Error(`There was a problem loading the adapter's package`))
         }
     }
-    bindWorkspace(cli)
     commands.forEach(command => {
         genCommand(command)
     })
