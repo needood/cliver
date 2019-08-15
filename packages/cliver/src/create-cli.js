@@ -4,7 +4,7 @@ import readPkgUp from 'read-pkg-up'
 function adapter() {
     let adapterName
     try {
-        const { package:_package } = readPkgUp.sync()
+        const { package:_package } = readPkgUp.sync({cwd:process.cwd()})
         adapterName = _package.adapter||adapterName
     } catch (err) {
         /* ignore */

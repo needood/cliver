@@ -9,16 +9,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.buildLocalCommands = buildLocalCommands;
 
-var _resolveCwd = _interopRequireDefault(require("resolve-cwd"));
-
 var _workspace = require("./workspace");
+
+var _resolveFrom = _interopRequireDefault(require("resolve-from"));
 
 function buildLocalCommands(cli, adapterName) {
   var commands = [];
 
   if (adapterName) {
     try {
-      var adapterPackagePath = _resolveCwd.default.silent(`${adapterName}`);
+      var adapterPackagePath = _resolveFrom.default.silent(process.cwd(), adapterName);
 
       var {
         commands: _commands
@@ -30,7 +30,7 @@ function buildLocalCommands(cli, adapterName) {
     }
   }
 
-  cli.command.apply(cli, _workspace.workspace);
+  (0, _workspace.bindWorkspace)(cli);
   commands.forEach(command => {
     genCommand(command);
   });

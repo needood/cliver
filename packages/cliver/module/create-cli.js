@@ -19,7 +19,9 @@ function adapter() {
   try {
     var {
       package: _package
-    } = _readPkgUp.default.sync();
+    } = _readPkgUp.default.sync({
+      cwd: process.cwd()
+    });
 
     adapterName = _package.adapter || adapterName;
   } catch (err) {
