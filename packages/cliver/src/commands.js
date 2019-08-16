@@ -7,7 +7,8 @@ export function bindCommandsByadapterName(cli, adapterName) {
             const { commands } = require(adapterPackagePath)
             bindCommands(cli, commands)
         } catch (err) {
-            throw (new Error(`There was a problem loading the local adapter`))
+            //TODO:adapter依赖未安装时卡在抛错的流程问题
+            //throw (new Error(`There was a problem loading the local adapter`))
         }
     }
 }

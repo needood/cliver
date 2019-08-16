@@ -53,6 +53,7 @@ module可以是一个依赖或者相对地址
 module例子:
 
 ```javascript
+//添加命令 test [foo]
 export const commands = [
     {
         name:"test [foo]",
@@ -63,6 +64,10 @@ export const commands = [
         }
     }
 ]
+//命令adapter会运行start函数
+export function start(){
+    console.log('start')
+}
 ```
 
 ## 例子

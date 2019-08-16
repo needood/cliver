@@ -1,23 +1,22 @@
 const npm = require('npm')
 
-module.exports = {
-    install
-}
 let installing = false
 
-function install(deps, path) {
-    return new Promise((resolve, reject) => {
+export async function install(deps, configEntries=[]) {
+    return await new Promise((resolve, reject) => {
         npm.load(function (error) {
             if (installing) {
                 console.error("installing...")
                 return reject()
             }
             installing = true
-            if(path){
-                npm.prefix = path
-            }
-            //npm.config.set('save-dev',true)
-            //npm.config.set('registry', 'https://registry.npm.taobao.org')
+            configEntries.forEach(item => {
+                if(item[0]==='prefix'){
+                    npm.prefix = item[1]
+                }else{
+                    npm.config.set(item[0],item[1])
+                }
+            });
             npm.commands.install(deps, function (error, data) {
                 installing = false
                 if (error) {

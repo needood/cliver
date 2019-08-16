@@ -9,3 +9,6 @@ export const commands = [
         }
     }
 ]
+export function start() {
+    console.log('start script')
+}
