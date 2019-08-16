@@ -69,7 +69,7 @@ export const commands = [
 
 适配器例子:
 
-packages/adapter-test
+参考 packages/adapter-test
 
 使用项目例子:
 
@@ -81,7 +81,7 @@ PS:使用yarn 构建
 
 ## 封装
 
-packages/cli-test 通过cliver和适配器封装新的cli工具 
+参考 packages/cli-test 通过cliver和适配器封装新的cli工具 
 
 ```javascript
 #!/usr/bin/env node
