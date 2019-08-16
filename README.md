@@ -78,6 +78,8 @@ packages/demo
 
 PS:使用yarn 构建
 
+## 封装
+
 packages/cli-test 通过cliver和适配器封装新的cli工具 
 
 ```javascript
