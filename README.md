@@ -43,7 +43,7 @@ Usage: cliver <command> [options]
 
 添加适配器定制cliver的命令,参考 packages/adapter-test
 
-方法1: 在项目中的package.json 文件中添加adapter到对应的依赖包或者js文件
+方法1: 在项目中的package.json 文件中添加adapter指向对应的依赖包或者js文件(填写依赖包的名字或者文件的路径)
 
 方法2:
 通过 cliver adapter [module] 命令为项目添加适配器
