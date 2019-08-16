@@ -18,7 +18,7 @@ export function bindCommands(cli, commands) {
 }
 function genCommand(cli, { name, desc, handler }) {
     desc = desc || `(Empty)`
-    desc = '*' + desc
+    desc = '* ' + desc
     return cli.command(name, desc, () => { }, (...argv) => {
         return handler(...argv)
     })

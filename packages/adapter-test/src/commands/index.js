@@ -1,11 +1,11 @@
 export const commands = [
     {
-        name:"test",
+        name:"test [foo]",
         desc:"测试用命令",
-        handler(...args){
+        handler(argv){
             console.log('cwd',process.cwd())
             console.log('dirname',__dirname)
-            console.log("test",...args)
+            console.log("test", argv.foo, argv)
         }
     }
 ]

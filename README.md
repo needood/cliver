@@ -58,10 +58,11 @@ module例子:
 ```javascript
 export const commands = [
     {
-        name:"test",
+        name:"test [foo]",
         desc:"测试用命令",
-        handler(...args){
-            console.log("test命令:",...args)
+        handler(argv){
+            console.log("test", argv.foo, argv)
+            //output test bar { _: [ 'test' ], '$0': 'cliver', foo: 'bar' }
         }
     }
 ]
