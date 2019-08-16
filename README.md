@@ -30,11 +30,6 @@ Usage: cliver <command> [options]
   -v, --version  显示版本号                                                     [布尔]
 ```
 
-## 桥接命令
-
-可以依赖包中为cli扩展更多命令,参考 packages/cliver-commands-test
-
-在项目中的package.json 文件中添加adapter到对应的依赖包或者js文件,可以为cli添加更多命令
 
 ## 工作区
 
@@ -46,9 +41,11 @@ Usage: cliver <command> [options]
 
 ## 适配器
 
-添加适配器定制cliver的命令
+添加适配器定制cliver的命令,参考 packages/adapter-test
 
-方法:
+方法1: 在项目中的package.json 文件中添加adapter指向对应的依赖包或者js文件(填写依赖包的名字或者文件的路径)
+
+方法2:
 通过 cliver adapter [module] 命令为项目添加适配器
 
 module可以是一个依赖或者相对地址
@@ -81,6 +78,8 @@ packages/demo
 ## 开发
 
 PS:使用yarn 构建
+
+## 封装
 
 packages/cli-test 通过cliver和适配器封装新的cli工具 
 
