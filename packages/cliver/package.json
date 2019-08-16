@@ -1,11 +1,11 @@
 {
   "name": "cliver",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "",
   "main": "module/index.js",
   "scripts": {
     "prepublish": "npm run babel-module",
-    "babel-module": "cross-env BABEL_ENV=module babel src --out-dir module --config-file=../../babel.config.js"
+    "babel-module": "cross-env BABEL_ENV=module babel --root-mode upward  --source-maps=true src --out-dir module"
   },
   "bin": {
     "cliver": "module/cli.js"
