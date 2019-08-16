@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import { createCli } from './create-cli'
 import pkg from '../package.json'
 import updateNotifier from 'update-notifier'
@@ -13,4 +12,13 @@ if(argv.workspace){
 // Check if update is available
 updateNotifier({ pkg }).notify()
 
-createCli(process.argv)
+export function runCli(){
+    createCli(process.argv)
+}
+export function buildCli({ commands }) {
+    if(commands){
+        createCli(process.argv, { commands })
+    }else{
+        throw new Error("adapter is required")
+    }
+}

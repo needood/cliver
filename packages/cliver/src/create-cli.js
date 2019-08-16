@@ -1,9 +1,9 @@
-import { buildLocalCommands } from './commands'
+import { bindCommands, bindCommandsByadapterName } from './commands'
 import { bindWorkspace } from './workspace'
 import { bindAdapter } from './adapter'
 import yargs from 'yargs'
 import readPkgUp from 'read-pkg-up'
-function adapter() {
+function getAdapterName() {
     let adapterName
     try {
         const { package: _package } = readPkgUp.sync({ cwd: process.cwd() })
@@ -14,11 +14,14 @@ function adapter() {
     return adapterName
 }
 
-export function createCli(argv) {
+export function createCli(argv, { commands }={}) {
     let cli = yargs()
     bindAdapter(cli)
     bindWorkspace(cli)
-    buildLocalCommands(cli, adapter())
+    if(commands){
+        bindCommands(cli, commands)
+    }
+    bindCommandsByadapterName(cli, getAdapterName())
     cli.usage(`Usage: $0 <command> [options]`)
         .alias(`h`, `help`)
         .alias(`v`, `version`)

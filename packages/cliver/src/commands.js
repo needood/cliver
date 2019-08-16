@@ -1,25 +1,25 @@
 import resolveFrom from 'resolve-from'
 
-
-export function buildLocalCommands(cli, adapterName) {
-    let commands = []
+export function bindCommandsByadapterName(cli, adapterName) {
     if(adapterName){
         try {
             const adapterPackagePath = resolveFrom.silent(process.cwd(),adapterName)
-            let { commands: _commands } = require(adapterPackagePath)
-            commands = _commands || commands
+            const { commands } = require(adapterPackagePath)
+            bindCommands(cli, commands)
         } catch (err) {
-            throw (new Error(`There was a problem loading the adapter's package`))
+            throw (new Error(`There was a problem loading the local adapter`))
         }
     }
+}
+export function bindCommands(cli, commands) {
     commands.forEach(command => {
-        genCommand(command)
+        genCommand(cli, command)
     })
-    function genCommand({ name, desc, handler }) {
-        desc = desc || `(Empty)`
-        desc = '*' + desc
-        return cli.command(name, desc, () => { }, (...argv) => {
-            return handler(...argv)
-        })
-    }
+}
+function genCommand(cli, { name, desc, handler }) {
+    desc = desc || `(Empty)`
+    desc = '*' + desc
+    return cli.command(name, desc, () => { }, (...argv) => {
+        return handler(...argv)
+    })
 }

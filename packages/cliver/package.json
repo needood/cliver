@@ -1,6 +1,6 @@
 {
   "name": "cliver",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "",
   "main": "module/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "babel-module": "cross-env BABEL_ENV=module babel src --out-dir module --config-file=../../babel.config.js"
   },
   "bin": {
-    "cliver": "module/index.js"
+    "cliver": "module/cli.js"
   },
   "contributors": [
     {
