@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "prepublish": "npm run babel-module",
-    "babel-module": "cross-env BABEL_ENV=module babel src --out-dir module --config-file=../../babel.config.js"
+    "babel-module": "cross-env BABEL_ENV=module babel --root-mode upward  --source-maps=true src --out-dir module"
   },
   "dependencies": {
     "core-js": "3",
