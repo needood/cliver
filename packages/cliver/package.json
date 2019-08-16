@@ -5,7 +5,9 @@
   "main": "module/index.js",
   "scripts": {
     "prepublish": "npm run babel-module",
-    "babel-module": "cross-env BABEL_ENV=module babel --root-mode upward  --source-maps=true src --out-dir module"
+    "babel-module": "cross-env BABEL_ENV=module babel --root-mode upward --source-maps=true src --out-dir module",
+    "watch:babel-module": "cross-env BABEL_ENV=module babel --root-mode upward --source-maps=true src --watch --out-dir module",
+    "watch": "npm run watch:babel-module"
   },
   "bin": {
     "cliver": "module/cli.js"
