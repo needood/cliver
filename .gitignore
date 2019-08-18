@@ -2,3 +2,5 @@ node_modules
 module
 yarn-error.log
 .DS_Store
+/packages/nezha
+/packages/nezha-test

@@ -10,14 +10,14 @@ const adapter = ['adapter [module]','添加适配器',(yargs) => {
         .positional('module', {
             describe: '模块名',
         })
-},(argv)=>{
+},async (argv)=>{
     if(argv.module){
-        setAdapter(argv)
+        await setAdapter(argv)
     }else{
         //TODO:在依赖包中选择模块
     }
 }]
-function setAdapter(argv) {
+async function setAdapter(argv) {
     const _module = argv.module
     const { package: _package, path } = readPkgUp.sync({ cwd: process.cwd() })
     _package.adapter = _module
@@ -25,10 +25,10 @@ function setAdapter(argv) {
     if (_module[0] !== '.') {
         //TODO:判断是否已经安装依赖
         const { devDependencies = {} } = _package
-        if(devDependencies.hasOwnProperty(_module)){
-            install([_module], [['save-dev', true]])
-        }else{
-            install([_module], [['save', true]])
+        if (devDependencies.hasOwnProperty(_module)) {
+            await install(null, `${_module} --save-dev`)
+        } else {
+            await install(null, `${_module} --save`)
         }
     }
     startAdapter(_module)
