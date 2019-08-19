@@ -1,7 +1,6 @@
 {
-  "name": "cliver",
+  "name": "cliver-project",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "workspaces": [
     "packages/*"
@@ -10,28 +9,40 @@
   "directories": {
     "doc": "docs"
   },
-  "scripts": {
-    "prepublish": "wsrun install",
-    "watch": "wsrun --exclude-missing watch"
-  },
+  "scripts": {},
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
+    "@babel/plugin-transform-computed-properties": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "babel-plugin-module-resolver": "^3.2.0",
     "cross-env": "^5.2.0",
     "glob": "^7.1.4",
-    "npm-run-all": "^4.1.5",
     "read-pkg-up": "^6.0.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.7.2",
-    "webpack-merge": "^4.2.1",
-    "wsrun": "^5.0.0"
+    "webpack-merge": "^4.2.1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "core-js": "3",
+    "@babel/runtime": "^7.3.4",
+    "execa": "^2.0.4",
+    "fs-extra": "^8.1.0",
+    "read-pkg-up": "^6.0.0",
+    "resolve-from": "^5.0.0",
+    "table": "^5.4.5",
+    "update-notifier": "^2.5.0",
+    "yargs": "^12.0.1",
+    "cliver": "^0.3.2",
+    "glob": "^7.1.4",
+    "path-key": "^3.1.0",
+    "wsrun": "^5.0.0"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "cliver-project@1.0.0"
 }

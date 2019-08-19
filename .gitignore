@@ -1,6 +1,5 @@
 node_modules
-module
+/packages/*/lib
 yarn-error.log
 .DS_Store
-/packages/nezha
-/packages/nezha-test
+/packages/nzha-test

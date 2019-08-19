@@ -23,7 +23,7 @@ module.exports = {
             "plugins": [
                 "@babel/plugin-transform-runtime",
                 ["module-resolver", {
-                    resolvePath: resolvePath('browser','browser')
+                    resolvePath: resolvePath('browser', 'browser')
                 }]
             ]
 

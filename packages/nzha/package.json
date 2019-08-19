@@ -1,8 +1,8 @@
 {
-  "name": "cliver",
-  "version": "0.3.2",
-  "description": "",
-  "main": "lib/index.js",
+  "name": "nzha",
+  "version": "0.1.0",
+  "main": "./lib/commands/index.js",
+  "license": "MIT",
   "scripts": {
     "prepublish": "npm run babel-lib",
     "babel-lib": "cross-env BABEL_ENV=lib babel --root-mode upward  --source-maps=true src --out-dir lib",
@@ -10,30 +10,24 @@
     "watch": "npm run watch:babel-lib"
   },
   "bin": {
-    "cliver": "lib/cli.js"
+    "nzha": "lib/cli.js"
   },
-  "contributors": [
-    {
-      "name": "cliver Contributors",
-      "url": "https://github.com/needood/cliver/graphs/contributors"
-    }
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/needood/cliver.git"
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "cross-env": "^5.2.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.3.4",
+    "cliver": "^0.3.2",
     "core-js": "3",
     "execa": "^2.0.4",
     "fs-extra": "^8.1.0",
+    "glob": "^7.1.4",
+    "path-key": "^3.1.0",
     "read-pkg-up": "^6.0.0",
-    "resolve-from": "^5.0.0",
-    "table": "^5.4.5",
-    "update-notifier": "^2.5.0",
-    "yargs": "^12.0.1"
+    "wsrun": "^5.0.0"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "readme": "ERROR: No README data found!"
 }

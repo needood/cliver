@@ -1,15 +1,15 @@
 {
-  "name": "adapter-test",
+  "name": "@local/adapter-test",
   "version": "1.0.0",
-  "main": "./module/commands/index.js",
+  "main": "./lib/commands/index.js",
   "commands": [
     "test"
   ],
   "scripts": {
-    "prepublish": "npm run babel-module",
-    "babel-module": "cross-env BABEL_ENV=module babel --root-mode upward  --source-maps=true src --out-dir module",
-    "watch:babel-module": "cross-env BABEL_ENV=module babel --root-mode upward --source-maps=true src --watch --out-dir module",
-    "watch": "npm run watch:babel-module"
+    "prepublish": "npm run babel-lib",
+    "babel-lib": "cross-env BABEL_ENV=lib babel --root-mode upward  --source-maps=true src --out-dir lib",
+    "watch:babel-lib": "cross-env BABEL_ENV=lib babel --root-mode upward --source-maps=true src --watch --out-dir lib",
+    "watch": "npm run watch:babel-lib"
   },
   "dependencies": {
     "core-js": "3",
