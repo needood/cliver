@@ -1,8 +1,9 @@
 import { bindCommands, bindCommandsByadapterName } from './commands'
-import { bindWorkspace } from './workspace'
+import { bindWorkspace, bindWorkspaceOption } from './workspace'
 import { bindAdapter } from './adapter'
 import yargs from 'yargs'
 import readPkgUp from 'read-pkg-up'
+import { bindOptionsByadapterName, bindOptions } from './options';
 function getAdapterName() {
     let adapterName
     try {
@@ -14,21 +15,26 @@ function getAdapterName() {
     return adapterName
 }
 
-export function createCli(argv, { commands }={}) {
+export function createCli(pargv, { commands, options } = {}) {
     let cli = yargs()
     bindAdapter(cli)
+    bindWorkspaceOption(cli)
     bindWorkspace(cli)
+    if(options){
+        bindOptions(cli, options)
+    }
     if(commands){
         bindCommands(cli, commands)
     }
+    bindOptionsByadapterName(cli, getAdapterName())
     bindCommandsByadapterName(cli, getAdapterName())
     cli.usage(`Usage: $0 <command> [options]`)
-        .alias(`h`, `help`)
-        .alias(`v`, `version`)
+        .alias(`help`, `h`)
+        .alias(`version`, `v`)
         .wrap(cli.terminalWidth())
         .demandCommand(1, `Pass --help to see all available commands and options.`)
-        .strict()
+        //.strict()
         .showHelpOnFail(true)
         .recommendCommands()
-        .parse(argv.slice(2))
+        .parse(pargv.slice(2))
 }

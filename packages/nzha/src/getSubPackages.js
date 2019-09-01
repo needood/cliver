@@ -14,6 +14,8 @@ export function getSubPackages({ cwd }) {
                     relativePath: path,
                     package: p.package
                 })
+            }else{
+                throw "subproject name must diffent"
             }
         })
     })

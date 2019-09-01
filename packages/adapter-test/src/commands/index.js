@@ -9,6 +9,13 @@ export const commands = [
         }
     }
 ]
+export const options = [{
+    name:"opt",
+    alias:"o",
+    handler(argv){
+        console.log("opt",argv.opt)
+    }
+}]
 export function start() {
     console.log('start script')
 }

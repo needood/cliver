@@ -69,9 +69,12 @@ const workspaceRm = ['workspace-rm [alias]', '删除指定工作区', (yargs) =>
         removeWorkspace(argv.alias)
     }
 }]
-export function bindWorkspace(cli){
-    cli.option('workspace', {
+export function bindWorkspaceOption(cli){
+    return cli.option('workspace', {
         describe: '指定工作区',
+        alias: 'w',
     })
-    cli.command(...workspaceSet).command(...workspaceLs).command(...workspaceRm)
+}
+export function bindWorkspace(cli){
+    return cli.command(...workspaceSet).command(...workspaceLs).command(...workspaceRm)
 }
