@@ -68,6 +68,14 @@ export const commands = [
         }
     }
 ]
+export const options = [{
+    name:"opt",
+    alias:"o",
+    desc: 'opt选项',
+    handler(argv){
+        console.log("opt",argv.opt)
+    }
+}]
 //命令adapter会运行start函数
 export function start(){
     console.log('start')
