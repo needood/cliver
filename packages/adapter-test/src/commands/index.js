@@ -12,6 +12,7 @@ export const commands = [
 export const options = [{
     name:"opt",
     alias:"o",
+    desc: 'opt选项',
     handler(argv){
         console.log("opt",argv.opt)
     }
