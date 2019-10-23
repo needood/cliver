@@ -24,13 +24,13 @@ export const commands = [{
                 await init(undefined, '-y')
                 const { package: _package, path: pPath } = readPkgUp.sync({ cwd: process.cwd() })
                 _package.scripts.prepublish = "npm run babel-lib"
-                _package.scripts['babel-lib'] = "cross-env BABEL_ENV=lib babel --root-mode upward --source-maps=true src --out-dir lib"
+                _package.scripts['babel-lib'] = "cross-env BABEL_ENV=lib babel --extensions '.ts' --root-mode upward --source-maps=true src --out-dir lib"
                 _package.scripts.watch = "npm run watch:babel-lib"
-                _package.scripts['watch:babel-lib'] = "cross-env BABEL_ENV=lib babel --root-mode upward --source-maps=true src --watch --out-dir lib"
+                _package.scripts['watch:babel-lib'] = "cross-env BABEL_ENV=lib babel --extensions '.ts' --root-mode upward --source-maps=true src --watch --out-dir lib"
                 _package.main = 'lib/index.js'
                 _package.dependencies = {
                     "core-js": "3",
-                    "@babel/runtime": "^7.3.4"
+                    "@babel/runtime": "^7.5.5"
                 }
                 fs.writeFileSync(pPath, JSON.stringify(_package, null, 2));
             } finally {
@@ -48,10 +48,12 @@ export const commands = [{
         _package.workspaces = ["packages/*"]
         _package.private = true
         _package.devDependencies = {
-            "@babel/cli": "^7.2.3",
-            "@babel/core": "^7.3.4",
+            "@babel/cli": "^7.5.5",
+            "@babel/core": "^7.5.5",
+            "@babel/plugin-proposal-class-properties": "^7.5.5",
             "@babel/plugin-transform-runtime": "^7.3.4",
             "@babel/preset-env": "^7.3.4",
+            "@babel/preset-typescript": "^7.6.0",
             "babel-plugin-module-resolver": "^3.2.0",
             "cross-env": "^5.2.0",
             "glob": "^7.1.4",

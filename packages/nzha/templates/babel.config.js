@@ -3,6 +3,7 @@ module.exports = {
     "env": {
         "browser": {
             "presets": [
+                "@babel/preset-typescript",
                 [
                     "@babel/preset-env",
                     {
@@ -21,7 +22,9 @@ module.exports = {
                 ]
             ],
             "plugins": [
+                "@babel/plugin-proposal-class-properties",
                 "@babel/plugin-transform-runtime",
+                "@babel/plugin-transform-computed-properties",
                 ["module-resolver", {
                     resolvePath: resolvePath('browser', 'browser')
                 }]
@@ -30,6 +33,7 @@ module.exports = {
         },
         "lib": {
             "presets": [
+                "@babel/preset-typescript",
                 ["@babel/preset-env", {
                     "targets": {
                         "node": "6.10"
@@ -41,6 +45,7 @@ module.exports = {
                 }]
             ],
             "plugins": [
+                "@babel/plugin-proposal-class-properties",
                 "@babel/plugin-transform-runtime",
                 "@babel/plugin-transform-computed-properties",
                 ["module-resolver", {

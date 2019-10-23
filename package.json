@@ -11,8 +11,8 @@
   },
   "scripts": {},
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.4",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
     "@babel/plugin-transform-computed-properties": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
@@ -38,7 +38,7 @@
     "table": "^5.4.5",
     "update-notifier": "^2.5.0",
     "yargs": "^12.0.1",
-    "cliver": "^0.3.2",
+    "cliver": "^0.3.3",
     "glob": "^7.1.4",
     "path-key": "^3.1.0",
     "wsrun": "^5.0.0"
