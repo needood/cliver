@@ -50,6 +50,7 @@ export const commands = [{
         _package.devDependencies = {
             "@babel/cli": "^7.5.5",
             "@babel/core": "^7.5.5",
+            "@babel/plugin-proposal-decorators": "^7.5.5",
             "@babel/plugin-proposal-class-properties": "^7.5.5",
             "@babel/plugin-transform-runtime": "^7.3.4",
             "@babel/preset-env": "^7.3.4",
