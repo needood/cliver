@@ -21,7 +21,7 @@
     "glob": "^7.1.4",
     "read-pkg-up": "^6.0.0",
     "webpack": "^4.39.1",
-    "webpack-cli": "^3.2.3",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"
   },
